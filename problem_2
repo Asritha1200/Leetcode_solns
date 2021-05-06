@@ -1,0 +1,61 @@
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
+
+    struct ListNode * f3=0;  struct ListNode * t=0;struct ListNode * last;
+    struct ListNode * f1=l1;
+    struct ListNode * f2=l2;int c=0;int v,v1;
+    while(1)
+    {
+        t=(struct ListNode *)malloc(sizeof(struct ListNode));
+        t->next=0;
+        if(f1!=0)
+        {
+            v=f1->val;
+        }
+        else
+            v=0;
+         if(f2!=0)
+        {
+            v1=f2->val;
+        }
+        else
+            v1=0;
+        
+          t->val=(v+v1+c)%10;
+        c=(v+v1+c)/10;
+        
+
+       
+        
+           if(f3==0)
+           {
+               f3=t;last=t;}
+            else
+            {
+                last->next=t;
+                last=t;
+            }
+        
+        
+    if(f1!=0)   f1=f1->next; 
+  if(f2!=0)   f2=f2->next; 
+        if(f1==0&&f2==0)
+            break;
+
+    }
+    if(c!=0)
+    {
+        t=(struct ListNode *)malloc(sizeof(struct ListNode));
+        t->next=0;
+        t->val=c;
+        last->next=t;
+    }
+    return f3;
+        
+    
+    
+}

@@ -1,0 +1,64 @@
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+#include <stdio.h>
+#include <stdlib.h>
+
+
+double findMedianSortedArrays(int* nums1, int n1s, int* nums2, int n2s){
+    int ns=n1s+n2s;
+    
+    int *m=(int *)malloc(sizeof(int)*(n1s+n2s));int k;
+    for( k=0;k<n1s;k++)
+    {
+        m[k]=nums1[k];
+    }
+    for(int j=0;j<n2s;j++)
+    {
+        m[k++]=nums2[j];
+    }
+   
+   
+   int temp=0;
+    for(int i=0;i<ns-1;i++)
+    {
+         int min_index=i;
+      for(int j=i+1;j<ns;j++)  
+      {
+          if(m[j]<m[min_index])
+          {
+             
+            min_index=j;
+          }
+      }
+        temp=m[i];
+        m[i]=m[min_index];
+        m[min_index]=temp;
+        
+    }
+    
+
+    int start=0;double res=0;
+    int top=ns-1;
+    while(start<=top)
+    {
+        start++;
+        top--;
+   
+    }
+    
+    printf("%d",start);
+    printf("%d",top);
+    if(start==top)
+    {
+        res=m[start-1];
+        return res;
+    }
+    else
+    {
+        res=((m[start-1]+m[top+1])/2.0);
+        return res;
+        
+    }
+        
+    
+    
+}

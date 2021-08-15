@@ -1,0 +1,43 @@
+//brut force
+class Solution {
+    public Boolean palindrome(String str)
+    {
+        StringBuffer sb=new StringBuffer(str);
+        sb.reverse();
+        String rev=sb.toString();
+            if(str.equals(rev)){
+                return true;
+            }
+        
+            return false;
+        
+    }
+    public String longestPalindrome(String s) {
+    int max=0;
+        int l=0;
+        String longest="";
+        
+        for(int i=0;i<s.length();i++)
+        {
+            for(int j=i;j<s.length();j++,l=0)
+            {
+               
+           String sub=s.substring(i,j+1);
+          if(palindrome(sub))
+          {
+               l=sub.length();
+                if(l>max)
+                {
+                    max=l;
+                 longest=sub;
+                    
+                }
+                
+            }
+        }
+        
+        } 
+        
+        return longest;
+    }
+}

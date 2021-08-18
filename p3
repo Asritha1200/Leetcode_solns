@@ -1,4 +1,4 @@
-
+//brute force
 int lengthOfLongestSubstring(char * s){
      
     char null[5]={""};
@@ -53,3 +53,4 @@ int len;char *sub;int lens;int cnt=0;int max=1;
     }
      return max;
 }
+//window_sliding

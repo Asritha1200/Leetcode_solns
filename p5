@@ -32,7 +32,7 @@ class Solution {
                  longest=sub;
                     
                 }
-                
+               
             }
         }
         
@@ -86,4 +86,38 @@ class Solution {
         return s.substring(start,start+max);
         
     }
+}
+//exp around center
+class Solution {
+    public String longestPalindrome(String s) {
+        if(s.length()<2)
+        {
+            return s;
+        }
+        int l1=0;int l2=0;int l=0;int start=0;int end=0;
+        for(int i=0;i<s.length();i++)
+        {
+          l1=  expandaroundcenter(s,i,i);
+           l2= expandaroundcenter(s,i,i+1);
+            l=Math.max(l1,l2);
+            if(l>end-start)
+            {
+                end=i+(l/2);
+                start=i-((l-1)/2);
+            }
+            
+
+        }
+        return s.substring(start,end+1);
+    }
+    public int expandaroundcenter(String s,int L,int R)
+    {
+        while(L>=0&&R<s.length()&&s.charAt(L)==s.charAt(R))
+        {
+            L--;
+            R++;
+        }
+        return R-L-1;
+    }
+    
 }

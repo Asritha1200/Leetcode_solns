@@ -1,0 +1,28 @@
+class Solution {
+    public int reverse(int x) {
+        long res=0;int m=x;
+        if(x<0)
+        {
+            x=Math.abs(x);
+        }
+        int d=0;
+     while(x!=0)
+     {
+         d=x%10;
+         res=res*10+d;
+         x=x/10;
+         
+     }
+        if(res>Integer.MAX_VALUE||res<Integer.MIN_VALUE)
+        {
+            return 0;
+        }
+        if(m<0)
+        {
+           res =-1*res;
+            return (int)res;
+        }
+        else
+            return (int)res;
+    }
+}
